@@ -1,0 +1,17 @@
+@media only screen and (max-width:780px){
+    .sub-global{
+        flex-direction: column;
+    }
+    .b1{
+        width: 100%;
+    }
+    h2{
+        font-size: 25px;
+    }
+    .b1:last-child{
+        border:none;
+    }
+    .alert span{
+        font-size: 12px;
+    }
+}

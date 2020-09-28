@@ -55,7 +55,7 @@ h2{
 #form-div{
     width: 85%;
 }
-.form-item{
+.form-item{local
     width: 100%;
     background-color: whitesmoke;
     margin-bottom: 10px;
@@ -93,4 +93,7 @@ h2{
 .alert{
     color:orange;
     font-weight: bold;
+}
+#err{
+    display: none;
 }
