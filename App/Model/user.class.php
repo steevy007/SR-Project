@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Model;
-
 use App\Database\Singleton;
 
 class User extends Singleton
@@ -126,21 +125,24 @@ class User extends Singleton
             $req->execute([$code]);
             if ($req->rowCount() == 1) {
 
-                $req = $conn->prepare("Select password from users where code=? Limit 1");
+                $req = $conn->prepare("Select * from users where code=? Limit 1");
                 $req->execute([$code]);
                 if ($req->rowCount() == 1) {
 
-                    $pass = $req->fetch(\PDO::FETCH_OBJ);
+                    //$pass = $req->;
                     //echo $pass->password;
-
-
-                    if (password_verify($psw, $pass->password) == 1) {
-                        session_start();
-                        $_SESSION['identifiant']=$code;
-                        $message = 'succes';
-                    } else {
-                        $message = 'Password Incorrect';
+                    while($pass=$req->fetch(\PDO::FETCH_ASSOC)){
+                        if (password_verify($psw, $pass['password']) == 1) {
+                            session_start();
+                            $_SESSION['identifiant']=$code;
+                            $_SESSION['id']=$pass['id'];
+                            $message = 'succes';
+                        } else {
+                            $message = 'Password Incorrect';
+                        }
                     }
+
+                   
                 }
             } else {
                 $message = 'Code Introuvable';
@@ -149,5 +151,9 @@ class User extends Singleton
             die('Error =>' . $e);
         }
         return $message;
+    }
+
+    public static function Disconnect(){
+       
     }
 }

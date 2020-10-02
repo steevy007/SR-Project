@@ -1,16 +1,15 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@1&display=swap');
-body{
-    margin:0;
-    padding:0;
+body {
+    margin: 0;
+    padding: 0;
     overflow: hidden;
     font-size: 16px;
     font-family: 'Tajawal', sans-serif;
 }
 
-.global{
-    background-color:#5aaafa;
+.global {
+    background-color: #5aaafa;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -18,82 +17,261 @@ body{
     justify-content: center;
     align-items: center;
 }
-h2{
+
+h2 {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 5px;
-    color:rgb(87, 86, 86);
+    color: rgb(87, 86, 86);
     font-weight: bold;
-    font-size:35px;
+    font-size: 35px;
 }
-.sub-global{
+
+.sub-global {
     width: 70%;
     min-height: 500px;
     background-color: white;
     display: flex;
     flex-direction: row;
-    
 }
-.b1{
+
+.b1 {
     width: 50%;
 }
-.b1:first-child{
-    background-color:#5aaafa;
-  
+
+.b1:first-child {
+    background-color: #5aaafa;
 }
-.b1:last-child{
+
+.b1:last-child {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border:1px solid #4b91d8;
+    border: 1px solid #4b91d8;
 }
-.b1:first-child img{
+
+.b1:first-child img {
     width: 100%;
-    
 }
-#form-div{
+
+#form-div {
     width: 85%;
 }
-.form-item{local
+
+.form-item {
     width: 100%;
     background-color: whitesmoke;
     margin-bottom: 10px;
     padding: 0.5rem;
     box-sizing: border-box;
 }
-.btn{
-    border:none;
-    outline:none;
+
+.btn {
+    border: none;
+    outline: none;
     padding: 0.3rem 2rem;
-    background-color:#4b91d8;
-    border:1px solid transparent;
-    cursor:pointer;
-    transition:0.7s;
+    background-color: #4b91d8;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: 0.7s;
     font-family: 'Tajawal', sans-serif;
-    color:white;
-    font-size:20px;
+    color: white;
+    font-size: 20px;
     font-weight: bold;
     letter-spacing: 2px;
 }
-.btn:hover{
-    border:1px solid #4b91d8;
+
+.btn-new {
+    border: none;
+    outline: none;
+    padding: 0.3rem 2rem;
+    background-color: rgb(18, 18, 18);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: 0.7s;
+    font-family: 'Tajawal', sans-serif;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.btn-new:hover {
+    border: 1px solid black;
     background-color: white;
-    color:rgb(87, 86, 86);
+    color: #4b91d8;
 }
-.form-item input{
+
+.btn:hover {
+    border: 1px solid #4b91d8;
+    background-color: white;
+    color: rgb(87, 86, 86);
+}
+
+.form-item input {
     width: 100%;
-    border:none;
+    border: none;
     background-color: transparent;
-    outline:none;
-    color:rgb(87, 86, 86);
+    outline: none;
+    color: rgb(87, 86, 86);
     font-family: 'Ropa Sans', sans-serif;
-    font-size:18px;
+    font-size: 18px;
 }
-.alert{
-    color:orange;
+
+.alert {
+    color: orange;
     font-weight: bold;
 }
-#err{
+
+#err {
     display: none;
+}
+
+.menu {
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    min-height: 4rem;
+}
+
+.menupart {
+    width: 90%;
+    margin: auto;
+    padding: auto;
+    padding: 0.5rem 0rem;
+}
+
+#part1 {
+    float: left;
+}
+
+#part1 h2 {
+    margin: 0;
+    padding: 0;
+}
+
+#part3 {
+    float: right;
+}
+
+#corp {
+    width: 95%;
+    margin: auto;
+    padding: auto;
+    height: 100vh;
+}
+
+.menu-i {
+    position: relative;
+    top: 3px;
+}
+
+.btn-dec {
+    border: 1px solid #4b91d8;
+    padding: 0.5rem 1rem;
+    line-height: 3;
+    text-decoration: none;
+}
+
+.corp {
+    display: flex;
+    flex-direction: column;
+}
+
+#map {
+    transition: 0.7s;
+    width: 80%;
+    margin: auto;
+    padding: auto;
+    margin-top: 1rem;
+}
+
+#add-adresse {
+    width: 80%;
+    margin: auto;
+    padding: auto;
+    margin-top: 1rem;
+    transition: 0.7s;
+    ;
+    display: none;
+}
+
+#search {
+    width: 80%;
+    margin: auto;
+    padding: auto;
+    margin-top: 1rem;
+    transition: 0.7s;
+    display: none;
+}
+
+.menu-view {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20%;
+    height: 100vh;
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    padding: 0.5rem;
+    z-index: 10000;
+}
+
+.close {
+    text-align: right;
+}
+
+.bd-v ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.bd-v ul li {
+    display: block;
+}
+
+.bd-v ul li a {
+    display: block;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-size: 16px;
+    background-color: whitesmoke;
+    padding: 0.5rem;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: black;
+}
+
+.bd-v ul li a:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.mapouter {
+    position: relative;
+    text-align: right;
+    height: 500px;
+    width: 100%;
+}
+
+.gmap_canvas {
+    overflow: hidden;
+    background: none !important;
+    height: 100%;
+    width: 100%;
+}
+
+.err-class {
+    display: none;
+    margin-bottom: 0.5rem;
+    background-color: #e6e6fa;
+    padding: 0.5rem;
+    font-size: 16px;
+    color: rgb(24, 24, 24);
+    border: 1px solid rgb(24, 24, 24);
+    font-family: 'Tajawal', sans-serif;
+    letter-spacing: 3px;
+    text-transform: capitalize;
+    font-weight: bolder;
 }

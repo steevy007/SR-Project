@@ -23,6 +23,7 @@ class ComposerStaticInitc0ef4857030675eba36f61364f557e84
     public static $classMap = array (
         'App\\Database\\Connexion' => __DIR__ . '/../..' . '/app/Database/Database.class.php',
         'App\\Database\\Singleton' => __DIR__ . '/../..' . '/app/Database/Singleton.class.php',
+        'App\\Model\\Adresse' => __DIR__ . '/../..' . '/app/Model/adresse.class.php',
         'App\\Model\\User' => __DIR__ . '/../..' . '/app/Model/user.class.php',
     );
 

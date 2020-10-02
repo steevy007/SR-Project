@@ -1,3 +1,8 @@
+<?php 
+session_start();
+if(isset($_SESSION['identifiant']) AND $_SESSION['identifiant']!='') {
+    header(('Location:Accueil.view.php'));
+}?>
 <!DOCTYPE html>
 <html lang="en">
 
