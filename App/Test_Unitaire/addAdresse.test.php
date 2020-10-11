@@ -10,4 +10,7 @@ $adresse=new Adresse([
     'codePostal'=>'Code Postal'
 ]);
 
-//echo $adresse->searchAdresse();
+$req=$adresse->listAdresse();
+while($data=$req->fetch(PDO::FETCH_OBJ)){
+    echo $data->id;
+}

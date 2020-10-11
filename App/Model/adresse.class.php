@@ -36,7 +36,7 @@ class Adresse extends Singleton
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId()
     {
         return $this->id;
@@ -46,7 +46,7 @@ class Adresse extends Singleton
      * Set the value of id
      *
      * @return  self
-     */ 
+     */
     public function setId($id)
     {
         $this->id = $id;
@@ -56,7 +56,7 @@ class Adresse extends Singleton
 
     /**
      * Get the value of id_user
-     */ 
+     */
     public function getId_user()
     {
         return $this->id_user;
@@ -66,7 +66,7 @@ class Adresse extends Singleton
      * Set the value of id_user
      *
      * @return  self
-     */ 
+     */
     public function setId_user($id_user)
     {
         $this->id_user = $id_user;
@@ -76,7 +76,7 @@ class Adresse extends Singleton
 
     /**
      * Get the value of adresse
-     */ 
+     */
     public function getAdresse()
     {
         return $this->adresse;
@@ -86,7 +86,7 @@ class Adresse extends Singleton
      * Set the value of adresse
      *
      * @return  self
-     */ 
+     */
     public function setAdresse($adresse)
     {
         $this->adresse = $adresse;
@@ -96,7 +96,7 @@ class Adresse extends Singleton
 
     /**
      * Get the value of ville
-     */ 
+     */
     public function getVille()
     {
         return $this->ville;
@@ -106,7 +106,7 @@ class Adresse extends Singleton
      * Set the value of ville
      *
      * @return  self
-     */ 
+     */
     public function setVille($ville)
     {
         $this->ville = $ville;
@@ -116,7 +116,7 @@ class Adresse extends Singleton
 
     /**
      * Get the value of pays
-     */ 
+     */
     public function getPays()
     {
         return $this->pays;
@@ -126,7 +126,7 @@ class Adresse extends Singleton
      * Set the value of pays
      *
      * @return  self
-     */ 
+     */
     public function setPays($pays)
     {
         $this->pays = $pays;
@@ -136,7 +136,7 @@ class Adresse extends Singleton
 
     /**
      * Get the value of codePostal
-     */ 
+     */
     public function getCodePostal()
     {
         return $this->codePostal;
@@ -146,7 +146,7 @@ class Adresse extends Singleton
      * Set the value of codePostal
      *
      * @return  self
-     */ 
+     */
     public function setCodePostal($codePostal)
     {
         $this->codePostal = $codePostal;
@@ -159,40 +159,93 @@ class Adresse extends Singleton
      * fonction permettant d'ajouter une adresse dans la base de donnee
      */
 
-     public function addAdresse(){
+    public function addAdresse()
+    {
         $conn = parent::getConnexion();
-        try{
-            $rep=$conn->prepare("insert into adresse (id_user,adresse,ville,pays,codePostal) values(?,?,?,?,?)");
+        try {
+            $rep = $conn->prepare("insert into adresse (id_user,adresse,ville,pays,codePostal) values(?,?,?,?,?)");
             $rep->execute([
-                $this->id_user,$this->adresse,$this->ville,$this->pays,$this->codePostal
+                $this->id_user, $this->adresse, $this->ville, $this->pays, $this->codePostal
             ]);
-            if($rep){
+            if ($rep) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }catch(\PDOException $e){
-            die("Erreur => ".$e);
+        } catch (\PDOException $e) {
+            die("Erreur => " . $e);
         }
-     }
+    }
 
-     /**
-      * fonction permettant de rechercher une adresse
-      */
-      public function searchAdresse(){
+    /**
+     * fonction permettant de rechercher une adresse
+     */
+    public function searchAdresse()
+    {
         $conn = parent::getConnexion();
-        try{
-            $req=$conn->prepare("select * from adresse where adresse=? and ville=? and pays=? and codePostal=? LIMIT 1");
+        try {
+            $req = $conn->prepare("select * from adresse where adresse=? and ville=? and pays=? and codePostal=? LIMIT 1");
             $req->execute([
-                $this->adresse,$this->ville,$this->pays,$this->codePostal
+                $this->adresse, $this->ville, $this->pays, $this->codePostal
             ]);
-            if($req AND $req->rowCount()==1){
+            if ($req and $req->rowCount() == 1) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }catch(PDOException $e){
-            die("Error =>".$e);
+        } catch (PDOException $e) {
+            die("Error =>" . $e);
         }
-      }
+    }
+    /**
+     *fonction retournant le nombre d'utilisateur dans la base
+     */
+
+    public  function getNumberUser()
+    {
+        $conn = parent::getConnexion();
+        try {
+            $req = $conn->prepare("Select count(*) as nb from users");
+            $req->execute();
+            $nbUser = $req->fetch(\PDO::FETCH_ASSOC);
+            return $nbUser['nb'];
+        } catch (PDOException $e) {
+            die("Error =>" . $e);
+        }
+    }
+
+    /**
+     *fonction retournant le nombre d'adresse dans la base
+     */
+
+    public  function getNumberAdresse()
+    {
+        $conn = parent::getConnexion();
+        try {
+            $req = $conn->prepare("Select count(*) as nb from adresse");
+            $req->execute();
+            $nbUser = $req->fetch(\PDO::FETCH_ASSOC);
+            return $nbUser['nb'];
+        } catch (PDOException $e) {
+            die("Error =>" . $e);
+        }
+    }
+
+    /**
+     * foncction permettant de lister les adresse
+     */
+
+    public function listAdresse()
+    {
+        $conn = parent::getConnexion();
+        try {
+            $req = $conn->prepare("select * from adresse");
+            $req->execute();
+           if($req){
+            return $req;
+           }
+        } catch (PDOException $e) {
+            die("Error =>" . $e);
+        }
+    }
 }

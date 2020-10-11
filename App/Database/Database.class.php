@@ -7,7 +7,7 @@ use PDOException;
 class Connexion
 {
     const username = 'root';
-    const password = '';
+    const password = 'root';
     private $connexion = null;
 
     public function __construct()

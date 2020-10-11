@@ -1,7 +1,11 @@
 <?php
 session_start();
+require_once '../vendor/autoload.php';
+
+
 if (!isset($_SESSION['identifiant']) and $_SESSION['identifiant'] == '') {
     header(('Location:Home.view.php'));
+} else {
 }
 ?>
 <!DOCTYPE html>
@@ -10,6 +14,7 @@ if (!isset($_SESSION['identifiant']) and $_SESSION['identifiant'] == '') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
     <title>Home | Dashboard Application</title>
     <?php require_once('partial/_css.php') ?>
 </head>
@@ -35,8 +40,10 @@ if (!isset($_SESSION['identifiant']) and $_SESSION['identifiant'] == '') {
             <div class="bd-v">
                 <h2>SR2020</h2>
                 <ul>
+                    <li><a href="" id="l-home">Accueil</a></li>
                     <li><a href="" id="l-add">Ajouter Adresse</a></li>
                     <li><a href="" id="l-search">Rechercher Adresse</a></li>
+                    <li><a href="" id="l-list">Lister Adresse</a></li>
                     <li><a href="" id="l-map">Map</a></li>
                 </ul>
             </div>
@@ -46,13 +53,54 @@ if (!isset($_SESSION['identifiant']) and $_SESSION['identifiant'] == '') {
     <div id="corp">
         <div id="map">
             <h2>Google Map Visionnage</h2>
-            
+
             <div class="mapouter" id="mrouter">
-                
+
                 <div class="gmap_canvas" id="addMap">
-               <iframe width="100%" height="500px" id="gmap_canvas" src="https://maps.google.com/maps?q=Haiti&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.whatismyip-address.com/divi-discount/"></a> </div>
+                    <iframe width="100%" height="500px" id="gmap_canvas" src="https://maps.google.com/maps?q=Haiti&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.whatismyip-address.com/divi-discount/"></a> </div>
             </div>
         </div>
+
+
+        <div id="home">
+            <h2>Accueil</h2>
+            <div class="h-cont" id="load-home">
+            <?php require_once 'partial/_home.php' 
+            ?>
+            </div>
+
+            
+        </div>
+
+
+        <div id="list">
+            <h2>Lister Les Adresses Enregistree</h2>
+            <table id="example">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Adresse</th>
+                        <th>Ville</th>
+                        <th>Pays</th>
+                        <th>Code Postal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $req = $adresse->listAdresse();
+                    while ($data = $req->fetch(PDO::FETCH_OBJ)) { ?>
+                        <tr>
+                            <td><?= $data->id ?></td>
+                            <td><?= $data->adresse ?></td>
+                            <td><?= $data->ville ?></td>
+                            <td><?= $data->pays ?></td>
+                            <td><?= $data->codePostal ?></td>
+                        </tr>
+                    <?php } ?>
+
+                </tbody>
+            </table>
+        </div>
+
         <div id="add-adresse">
             <form method="post" id="form-add">
                 <h2>Ajouter Une Adresse</h2>
@@ -69,11 +117,11 @@ if (!isset($_SESSION['identifiant']) and $_SESSION['identifiant'] == '') {
                     <input type="text" name="cp" id="cp" placeholder="Saisir le code postal">
                 </div>
                 <div class="err-class" id="err-class">
-                   
+
                 </div>
-               
-                <button type="submit"  id="sub-add"  class="btn" >Ajouter</button>
-                
+
+                <button type="submit" id="sub-add" class="btn">Ajouter</button>
+
                 <div class="alert">
                     <br>
                     <span id="err"><i id="mserror"> </i></span>
@@ -96,7 +144,7 @@ if (!isset($_SESSION['identifiant']) and $_SESSION['identifiant'] == '') {
                     <input type="text" name="cp" id="cp0" placeholder="Saisir le code postal">
                 </div>
                 <div class="err-class" id="succes-class-1">
-                   
+
                 </div>
                 <button type="submit" class="btn-new" id="sub-search">Rechercher</button>
                 <div class="alert">

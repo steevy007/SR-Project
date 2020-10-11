@@ -14,19 +14,48 @@ $(document).ready(function() {
     $("#l-add").click(function(e) {
         e.preventDefault();
         $("#map").css("display", "none");
+        $("#list").css("display", "none");
         $("#add-adresse").css("display", "block");
         $("#search").css("display", "none");
+        $("#home").css("display", "none");
         $("#menu-view").css("display", "none");
         $("#form-search")[0].reset();
         $("#succes-class-1").css("display", "none");
     });
 
-    $("#l-search").click(function(e) {
+    $("#l-home").click(function(e) {
         e.preventDefault();
         $("#map").css("display", "none");
+        $("#search").css("display", "none");
+        $("#list").css("display", "none");
+        $("#add-adresse").css("display", "none");
+        $("#menu-view").css("display", "none");
+        $("#home").css("display", "block");
+        $("#form-search")[0].reset();
+        $("#succes-class-1").css("display", "none");
+    });
+    $("#l-list").click(function(e) {
+        e.preventDefault();
+        $("#map").css("display", "none");
+        $("#search").css("display", "none");
+        $("#add-adresse").css("display", "none");
+        $("#menu-view").css("display", "none");
+        $("#home").css("display", "none");
+        $("#list").css("display", "block");
+        formReset();
+        $("#form-add")[0].reset();
+        $("#succes-class-1").css("display", "none");
+    });
+
+    $("#l-search").click(function(e) {
+        e.preventDefault();
+        $("#home").css("display", "none");
+        $("#map").css("display", "none");
+        $("#list").css("display", "none");
         $("#add-adresse").css("display", "none");
         $("#search").css("display", "block");
         $("#menu-view").css("display", "none");
+        $("#home").css("display", "none");
         formReset();
         $("#form-add")[0].reset();
         $("#err-class").css("display", "none");
@@ -43,9 +72,11 @@ $(document).ready(function() {
     $("#l-map").click(function(e) {
         e.preventDefault();
         $("#addMap").html('<iframe width="100%" height="500px" id="gmap_canvas" src="https://maps.google.com/maps?q=Haiti&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.whatismyip-address.com/divi-discount/"></a>');
-
+        $("#add-adresse").css("display", "none");
+        $("#list").css("display", "none");
         $("#map").css("display", "block");
         $("#add-adresse").css("display", "none");
+        $("#home").css("display", "none");
         $("#search").css("display", "none");
         $("#menu-view").css("display", "none");
         formReset();
